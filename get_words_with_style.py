@@ -10,7 +10,7 @@ current_dir = os.path.dirname(os.path.realpath(__file__))
 
 file_path = os.path.join(current_dir, 'test_docx.docx')
 
-# Открываем документ
+# Open Doc
 doc = Document(file_path)
 
 
@@ -33,7 +33,7 @@ def get_color_name(rgb_tuple):
         return "Unknown"
 
 
-# Функция для получения информации о стиле текста
+# Get style text
 def get_info_style(run, paragraph=None):
     font_name = run.font.name
     font_size = run.font.size.pt if run.font.size else None
@@ -46,7 +46,7 @@ def get_info_style(run, paragraph=None):
     bold = run.bold
     italic = run.italic
 
-    # Получаем цвет шрифта
+    # Get color font
     font_color = run.font.color.rgb if run.font.color and run.font.color.rgb else None
     font_color_name = "Black"
     if font_color:
@@ -63,7 +63,7 @@ def get_info_style(run, paragraph=None):
         'color': font_color_name
     }
 
-    # Выводим информацию о стиле текста
+    # Check result about style text
     print(
         f"Font: {info_style['font']} | Size: {info_style['size']} | Bold: {info_style['bold']} | Italic: {info_style['italic']} | Color: {info_style['color']}")
 
@@ -100,7 +100,7 @@ def get_line_spacing_info(paragraph):
     }
 
 
-# Функция для создания XML элемента
+# Create XML element
 def create_xml_element(element_type, text, info_style):
     element = ET.Element(element_type)
     element.text = text
